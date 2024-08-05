@@ -22,7 +22,22 @@ const saveToDo = async (req, res) => {
         })
     } catch (error) {
         console.log(error)
-        res.send({ error: error, msg: "Something went wrong..." }).json({ msg: "Error" })
+        res.send({ error: error, msg: "Something went wrong..." });
     }
 }
 module.exports.saveToDo = saveToDo
+
+// Delete
+const deleteToDo = async (req, res) => {
+    try {
+        const { id } = req.body
+        ToDoModel.findByIdAndDelete(id).then(()=>{
+            console.log("Deleted...")
+            res.send("Deleted...")
+        })
+    } catch (error) {
+        console.log(error)
+        res.send({ error: error, msg: "Something went wrong..." });
+    }
+}
+module.exports.deleteToDo = deleteToDo
