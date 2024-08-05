@@ -30,7 +30,7 @@ module.exports.saveToDo = saveToDo
 // Delete
 const deleteToDo = async (req, res) => {
     try {
-        const { id } = req.body
+        const { id } = req.params
         ToDoModel.findByIdAndDelete(id).then(()=>{
             console.log("Deleted...")
             res.send("Deleted...")
